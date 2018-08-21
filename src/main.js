@@ -1,4 +1,4 @@
-const { getUserInput, rl } = require("./readline-helper");
+const { getUserInput, rl } = require("./utils/readline-helper");
 
 const main = async () => {
   const x = await getUserInput(
