@@ -1,4 +1,4 @@
-const Location = require("./Location")
+const Location = require("./Location");
 
 describe("Tests for Location", () => {
   test("create location with x and y coordinates", () => {
