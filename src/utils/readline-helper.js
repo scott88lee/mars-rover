@@ -1,19 +1,22 @@
 const readline = require("readline");
 
-const rl = readline.createInterface({
+const ioHelper = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
 
-const getUserInput = question => {
-  return new Promise((resolve, reject) => {
-    rl.question(question, answer => {
+function getUserInput(question) {
+  return new Promise(resolve => {
+    ioHelper.question(question, answer => {
       resolve(answer);
     });
   });
-};
+}
 
+function cleanUp() {
+  ioHelper.close();
+}
 module.exports = {
-  rl,
+  cleanUp,
   getUserInput
 };

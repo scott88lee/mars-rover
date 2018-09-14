@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-const { getUserInput, rl } = require("./utils/readline-helper");
+const { getUserInput, cleanUp } = require("./utils/readline-helper");
 
 const main = async () => {
   const x = await getUserInput(
@@ -24,7 +24,7 @@ const main = async () => {
     "The final coordinates of the mars rover is: <replace with the output of your program>"
   );
 
-  rl.close();
+  cleanUp();
 };
 
 main();
