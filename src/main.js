@@ -3,20 +3,25 @@
 const { getUserInput, cleanUp } = require("./utils/readline-helper");
 
 const main = async () => {
-  const x = await getUserInput(
-    "Specify the size of the Mars plateau (e.g. 5 5):"
+  const dimension = await getUserInput(
+    "Specify the size of the Mars surface (e.g. 5 5):"
   );
-  console.log("x is", x);
 
-  const y = await getUserInput(
+  const width = dimension.split(" ")[0];
+  const height = dimension.split(" ")[1];
+
+  console.log("the size of surface is ", width, height);
+
+  const initialLocation = await getUserInput(
     "Specify the initial coordinates and direction of the mars rover (e.g. 1 2 N):"
   );
-  console.log("y is", y);
 
-  const z = await getUserInput(
-    "Specify the instructions for the mars rover (e.g. LMLMLMLMM):"
+  console.log("the initial location is ", initialLocation);
+
+  const commands = await getUserInput(
+    "Specify the commands to be sent for the mars rover (e.g. FBLR):"
   );
-  console.log("z is", z);
+  console.log("the commands are ", commands);
 
   // TODO: include the functions that you've implemented for this kata
 
