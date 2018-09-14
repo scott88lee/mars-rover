@@ -17,18 +17,36 @@ const RIGHT_TURN_MAP = {
   [WEST]: NORTH
 };
 
+const OPPOSITE_DIRECTION_MAP = {
+  [NORTH]: SOUTH,
+  [SOUTH]: NORTH,
+  [WEST]: EAST,
+  [EAST]: WEST
+};
+
 function turnLeft(currentDirection) {
-  if (!(currentDirection in LEFT_TURN_MAP)) {
-    throw new Error("Invalid direction " + currentDirection);
-  }
+  validateDirection(currentDirection);
   return LEFT_TURN_MAP[currentDirection];
 }
 
 function turnRight(currentDirection) {
-  if (!(currentDirection in RIGHT_TURN_MAP)) {
+  validateDirection(currentDirection);
+  return RIGHT_TURN_MAP[currentDirection];
+}
+
+function oppositeOf(currentDirection) {
+  validateDirection(currentDirection);
+  return OPPOSITE_DIRECTION_MAP[currentDirection];
+}
+
+function validateDirection(currentDirection) {
+  if (!isValidDirection(currentDirection)) {
     throw new Error("Invalid direction " + currentDirection);
   }
-  return RIGHT_TURN_MAP[currentDirection];
+}
+
+function isValidDirection(direction) {
+  return [NORTH, SOUTH, EAST, WEST].includes(direction);
 }
 
 module.exports = {
@@ -37,5 +55,7 @@ module.exports = {
   EAST,
   WEST,
   turnLeft,
-  turnRight
+  turnRight,
+  oppositeOf,
+  isValidDirection
 };

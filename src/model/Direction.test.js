@@ -4,7 +4,9 @@ const {
   WEST,
   EAST,
   turnLeft,
-  turnRight
+  turnRight,
+  oppositeOf,
+  isValidDirection
 } = require("./Direction");
 
 describe("Test for Direction", () => {
@@ -27,5 +29,30 @@ describe("Test for Direction", () => {
 
   test("turn right with invalid direction should lead to error thrown", () => {
     expect(() => turnRight("garbage")).toThrowError(Error);
+  });
+
+  test("opposite direction", () => {
+    expect(oppositeOf(NORTH)).toEqual(SOUTH);
+    expect(oppositeOf(SOUTH)).toEqual(NORTH);
+    expect(oppositeOf(WEST)).toEqual(EAST);
+    expect(oppositeOf(EAST)).toEqual(WEST);
+  });
+
+  test("get opposite with invalid direction should lead to error thrown", () => {
+    expect(() => oppositeOf("garbage")).toThrowError(Error);
+  });
+
+  test("valid direction", () => {
+    expect(isValidDirection(NORTH)).toBeTruthy();
+    expect(isValidDirection(SOUTH)).toBeTruthy();
+    expect(isValidDirection(WEST)).toBeTruthy();
+    expect(isValidDirection(EAST)).toBeTruthy();
+  });
+
+  test("invalid direction", () => {
+    expect(isValidDirection("garbage")).toBeFalsy();
+    expect(isValidDirection("")).toBeFalsy();
+    expect(isValidDirection(null)).toBeFalsy();
+    expect(isValidDirection(undefined)).toBeFalsy();
   });
 });
