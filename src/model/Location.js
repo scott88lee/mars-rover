@@ -7,6 +7,7 @@ module.exports = class Location {
   }
 
   moveForward(direction) {
+    // TODO: validate the direction
     switch (direction) {
       case NORTH:
         return new Location(this.x, this.y + 1);
