@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 const { getUserInput, rl } = require("./utils/readline-helper");
 
 const main = async () => {
