@@ -1,4 +1,4 @@
-const { NORTH, SOUTH, EAST, WEST } = require("./Direction");
+const { NORTH, SOUTH, EAST, WEST, oppositeOf } = require("./Direction");
 
 module.exports = class Location {
   constructor(x, y) {
@@ -19,15 +19,6 @@ module.exports = class Location {
     }
   }
   moveBackward(direction) {
-    switch (direction) {
-      case NORTH:
-        return new Location(this.x, this.y - 1);
-      case SOUTH:
-        return new Location(this.x, this.y + 1);
-      case EAST:
-        return new Location(this.x - 1, this.y);
-      case WEST:
-        return new Location(this.x + 1, this.y);
-    }
+    return this.moveForward(oppositeOf(direction));
   }
 };
