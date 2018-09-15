@@ -36,6 +36,13 @@ const main = async () => {
   );
 
   cleanUp();
+
+  var rover = new Rover(5);
 };
+
+function Rover(initialLocation) {
+  this.initialLocation = initialLocation;
+  //this.initialDirection = initialDirection;
+}
 
 main();
